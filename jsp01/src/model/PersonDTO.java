@@ -1,4 +1,4 @@
-package jsp01;
+package model;
 
 public class PersonDTO {
 	// DB의 PERSON테이블의 필드와 동일한 구조이다.

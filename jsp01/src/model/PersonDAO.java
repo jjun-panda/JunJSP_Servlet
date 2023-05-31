@@ -1,4 +1,4 @@
-package jsp01;
+package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import dbcp.JdbcUtil;
 
 public class PersonDAO {
 	final String SELECT_ALL = "SELECT * FROM PERSON";
@@ -28,8 +30,8 @@ public class PersonDAO {
 		rs  = stmt.executeQuery();
 		while(rs.next()) {
 			int seq = rs.getInt("seq");
-			String name = rs.getNString("name");
-			String id = rs.getNString("id");
+			String name = rs.getString("name");
+			String id = rs.getString("id");
 			int age = rs.getInt("age");
 			list.add(new PersonDTO(seq, id, name, age));
 		}
@@ -47,12 +49,12 @@ public class PersonDAO {
 		 conn = JdbcUtil.getConnection();
 		 try {
 			stmt = conn.prepareStatement(SELECT_ONE);
-			stmt.setString(1, dto.getId());
+			stmt.setInt(1, dto.getSeq());
 			rs = stmt.executeQuery();
-			if (rs.next()) {
+			while(rs.next()) {
 					int seq = rs.getInt("seq");
-					String name = rs.getNString("name");
-					String id = rs.getNString("id");
+					String name = rs.getString("name");
+					String id = rs.getString("id");
 					int age = rs.getInt("age");
 					personal = new PersonDTO(seq, id, name, age);
 			 }
@@ -125,5 +127,24 @@ public class PersonDAO {
 		 } finally {
 			JdbcUtil.close(conn, stmt, rs);
 		 }
+	}
+	/////////////////////////////////////// ----- test
+	
+	public static void testSelectOne() {
+		// selectOne 테스트 하기
+		PersonDAO dao = new PersonDAO();
+		PersonDTO person = dao.selectOne(new PersonDTO(3, null, null, 0));
+		System.out.println(person);
+	}
+	
+	// JNDI를 사용하지 않은 어플리케이션은 main에서 테스트 가능.
+	public static void testSelectAll() {
+		// JDBC를 사용하기때문에 Oracle이 반드시 실행 되어야 한다.
+		PersonDAO dao = new PersonDAO();
+		
+		List<PersonDTO> list = dao.selectAll();
+		for(PersonDTO dto : list) {
+			System.out.println(dto);
+		}
 	}
 }
