@@ -1,4 +1,4 @@
-package org.comstudy.model;
+package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,12 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.comstudy.dbcp.JdbcUtil;
+import dbcp.JdbcUtil;
 
 public class SaramDAO {
    public static final String SELECT_ALL = "SELECT * FROM SARAM";
    public static final String SELECT_ONE = "SELECT * FROM SARAM WHERE SEQ=?";
-   public static final String INSERT = "insert into saram(seq,id,name,email) values(seq_saram.nextval,?,?,?)";
+   public static final String INSERT = "INSERT INTO SARAM(SEQ, ID, NAME, EMAIL) VALUES(seq_saram.nextval,?,?,?)";
    public static final String UPDATE = "UPDATE SARAM SET ID=?, NAME=?, EMAIL=? WHERE SEQ=?";
    public static final String DELETE = "DELETE FROM SARAM WHERE SEQ=?";
    
