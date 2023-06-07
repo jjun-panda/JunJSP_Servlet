@@ -1,0 +1,30 @@
+@charset "UTF-8";
+@import url("http://www.jjuns-c.com/webColor.css");
+@import url("http://www.jjuns-c.com/webFont.css");
+@import url("http://www.jjuns-c.com/webReset.css");
+
+/* body {background-color: var(--light-primary-normal)} */
+h1 {color:var(--light-primary-normal)}
+h2,h3,h4,h5,p,span, ul, li{color:--light-text-normal}
+
+table {
+    width: 100%;
+    border: 2px solid var(--light-line-strong);
+    border-right: 0;
+    border-left: 0;
+    margin: 1rem 0 2rem;
+}
+table tr > td {
+	height: 2rem;
+}
+
+.jumbotron {
+	padding: 4rem 2rem;
+    background-color: var(--light-primary-assistive) ;
+}
+
+.container {
+    width: 100%;
+    padding: 0 1rem;
+    margin: 2rem auto;
+}
