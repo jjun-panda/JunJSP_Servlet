@@ -4,45 +4,182 @@
 @import url("http://www.jjuns-c.com/webReset.css");
 
 /* body {background-color: var(--light-primary-normal)} */
-h1 {color:var(--light-primary-normal)}
-h2,h3,h4,h5,p,span, ul, li{color:--light-text-normal}
+h1 {
+	color:var(--light-primary-normal)
+}
+
+h2,h3,h4,h5,p,span, a, ul, li, form{
+	color:var(--light-text-normal);
+	font-size: 1.25rem;
+}
 
 table {
-    width: 100%;
-    border: 2px solid var(--light-line-strong);
-    border-right: 0;
-    border-left: 0;
-    margin: 1rem 0 2rem;
+	max-width: 50rem;
+	width: 100%;
+	border-top: 3px solid var(--light-primary-normal);
+	border-right: 0;
+	border-left: 0;
+	margin: 1rem auto 2rem;
 }
 table tr > td {
-	height: 2rem;
+	height: 2.75rem;
+	/* padding: 0.75rem; */
+	vertical-align: middle;
+	text-align: center;
+	border-top: 1px solid var(--light-primary-assistive);
 }
-
-.jumbotron {
-	padding: 4rem 2rem;
-    background-color: var(--light-primary-assistive) ;
+table tr > th {
+	height: 2.25rem;
+	/* padding: 0.75rem; */
+	vertical-align: middle;
+	text-align: center;
+	font-size: .875rem;
 }
-
-.container {
-    width: 100%;
-    padding: 0 1rem;
-    margin: 2rem auto;
-}
-
-h1{
-	width: 100%;
-	margin: 0 auto;
-	font-size: 3rem;
-	padding: 4rem 2rem;
-	background-color: var(--light-primary-assistive) ;
+table tr.tab {
+	background-color: var(--light-background-primary);
 }
 
 .body_layout{
-    max-width: 100%;
-    width: 100%;
+	max-width: 100%;
+	width: 100%;
+}
+
+.tit_bg{
+	background-color: var(--light-primary-assistive);
+}
+.tit_bg>h1{
+	font-size: 3rem;
+	max-width: 50rem;
+	margin: auto;
+	padding: 4rem 2rem;
 }
 .content_layout{
-    max-width: 1200px;
-    width: 100%;
-    margin: 1rem auto;
+	max-width: 50rem;
+	/* width: 100%; */
+	margin: 1rem auto;
+	padding: 2rem;
+}
+input[type="button"]{
+	font-size: .8rem;
+	height: 1.8rem;
+	border-radius: .25rem;
+	border: 0;
+	background-color: var(--light-primary-normal);
+	padding: 0 1rem;
+	color: var(--white);
+}
+input[type="text"] {
+	background-color: var(--light-background-primary);
+	border-radius: .25rem;
+	height: 3rem;
+	padding: 0 1rem;
+	border: 0;
+	font-size: 1rem;
+	width: 15rem;
+}
+input[type="submit"]{
+	background-color: var(--light-primary-normal);
+    border: none;
+    border-radius: 0.25rem;
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0 1rem;
+    height: 3rem;
+    min-width: 7.5rem;
+    max-width: 25rem;
+}
+
+hr {
+	margin: 2rem 0 1rem;
+	border: 0;
+	height: 1px;
+	background-color: var(--light-line-strong);
+}
+
+.content_layout div {
+	margin-bottom: 1rem;
+}
+
+/* 라디오 버튼 */
+.checkboxGender {
+	display: none;
+}
+
+.checkboxGender + em {
+	display: inline-block;
+	vertical-align: middle;
+	width: 1.25rem;
+	height: 1.25rem;
+	border: 2px solid var(--gray-200);
+	border-radius: 1.25rem;
+	position: relative;
+	box-sizing: border-box;
+}
+
+.checkboxGender:checked + em {
+	display: inline-block;
+	vertical-align: middle;
+	width: 1.25rem;
+	height: 1.25rem;
+	border: 0;
+	border-radius: 1.25rem;
+	background-color: var(--light-primary-normal);
+	position: relative;
+	box-sizing: border-box;
+}
+
+.checkboxGender + em:before {
+	content: "";
+	position: absolute;
+	left: 0.375rem;
+	right: 0.375rem;
+	bottom: 0.375rem;
+	top: 0.375rem;
+	border-radius: 1.25rem;
+	background: var(--white);
+	transform: scale(0.3);
+	opacity: 0;
+	transition: all 0.3s ease;
+}
+
+.checkboxGender:checked + em:before {
+	transform: scale(1);
+	opacity: 1;
+}
+
+.checkboxGender + em + span {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 1rem;
+	line-height: 1.25rem;
+	color: var(--gray-900);
+	margin-left: 0.5rem;
+	font-family: "PretendardVariable";
+	font-weight: 500;
+    margin-right: 2rem;
+}
+
+.checkboxGender + em + span:last-child {
+	margin-right: 0;
+}
+
+.drtail_tit {
+    font-weight: 300;
+    font-size: 3.5rem;
+    color: var(--light-text-dlsable);
+}
+.drtail_tit>span {
+    font-size: 3.5rem;
+    color: var(--light-text-strong);
+    background-image: linear-gradient(0, var(--light-secondary-normal) 0%, var(--light-secondary-normal) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 20%;
+    background-position: 0 90%;
+    transition: background-size 0.25s ease-in;
+}
+.drtail_tit>span:hover{
+    background-size: 100% 100%;
+    color: var(--light-primary-normal);
 }

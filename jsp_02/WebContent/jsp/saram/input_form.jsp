@@ -4,7 +4,7 @@
 <%@ include file="/inc/header.jsp" %>
 
     <h1>사람 정보 입력</h1>
-    <form action="input_ok.jsp" method="post">
+    <form action="input_ok.do" method="post">
         <table>
             <tr>
                 <th>아이디</th>

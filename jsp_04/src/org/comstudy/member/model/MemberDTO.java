@@ -22,9 +22,21 @@ public class MemberDTO {
 		this.gender = gender;
 	}
 	
+	public MemberDTO(String name, int height, int weight, int age, String gender) {
+		this.name = name;
+		this.height = height;
+		this.weight = weight;
+		this.age = age;
+		this.gender = gender;
+	}
+	
 	public MemberDTO(int seq, String name) {
 		this.seq = seq;
 		this.name = name;
+	}
+	
+	public MemberDTO(int seq) {
+		this.seq = seq;
 	}
 
 	public int getSeq() {

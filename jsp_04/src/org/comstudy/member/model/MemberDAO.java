@@ -13,150 +13,177 @@ public class MemberDAO {
 	private String SELECT_ALL = "SELECT * FROM MEMBER ORDER BY SEQ DESC";
 	private String SELECT_ONE = "SELECT * FROM MEMBER WHERE SEQ=?";
 	private String FIND_BY_NAME = "SELECT * FROM MEMBER WHERE NAME LIKE ?";
-	private String INSERT = "INSERT INTO MEMBER(SEQ, NAME, HEIGHT, WEIGHT, AGE, GENDER) VALUES(mem_seq.nextval, ?, ?, ?, ?, ?)";
-	private String UPDATE = "UPDATE MEMBER SET name = ?, height = ?, weight = ?, age = ?, gender = ? WHERE SEQ = ?";
-	private String DELETE = "DELETE FROM MEMBER WHERE SEQ = ?";
+	private String INSERT = "INSERT INTO MEMBER(SEQ, NAME, HEIGHT, WEIGHT, AGE, GENDER) VALUES(mem_seq.nextval,?,?,?,?,?)";
+	private String UPDATE = "UPDATE MEMBER SET NAME=?, HEIGHT=?, WEIGHT=?, AGE=?, GENDER=? WHERE SEQ=?";
+	private String DELETE = "DELETE FROM MEMBER WHERE SEQ=?";
 
 	private Connection conn;
-		private PreparedStatement stmt;
-		private ResultSet rs;
+	private PreparedStatement stmt;
+	private ResultSet rs;
 
-		public List<MemberDTO> selectAll() {
-			List<MemberDTO> list = new ArrayList<MemberDTO>();
-			conn = JdbcUtil.getConnection();
-			try {
-				stmt = conn.prepareStatement(SELECT_ALL);
-				rs = stmt.executeQuery();
-				while(rs.next()) {
-					int seq = rs.getInt(1);
-					String name = rs.getString(2);
-					int height = rs.getInt(3);
-					int weight = rs.getInt(4);
-					int age = rs.getInt(5);
-					String gender = rs.getString(6);
-					list.add(new MemberDTO(seq, name, height, weight, age, gender));
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				JdbcUtil.close(conn, stmt, rs);
+	public List<MemberDTO> selectAll() {
+		List<MemberDTO> list = new ArrayList<MemberDTO>();
+		conn = JdbcUtil.getConnection();
+		try {
+			stmt = conn.prepareStatement(SELECT_ALL);
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				int seq = rs.getInt(1);
+				String name = rs.getString(2);
+				int height = rs.getInt(3);
+				int weight = rs.getInt(4);
+				int age = rs.getInt(5);
+				String gender = rs.getString(6);
+				list.add(new MemberDTO(seq, name, height, weight, age, gender));
 			}
-			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(conn, stmt, rs);
 		}
+		return list;
+	}
 
-		public MemberDTO selectOne(MemberDTO dto) {
-			MemberDTO member = null;
-			conn = JdbcUtil.getConnection();
-			try {
-				stmt = conn.prepareStatement(SELECT_ONE);
-				stmt.setInt(1, dto.getSeq());
-				rs = stmt.executeQuery();
-				if(rs.next()) {
-					int seq = rs.getInt(1);
-					String name = rs.getString(2);
-					int height = rs.getInt(3);
-					int weight = rs.getInt(4);
-					int age = rs.getInt(5);
-					String gender = rs.getString(6);
-					member = new MemberDTO(seq, name, height, weight, age, gender);
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				JdbcUtil.close(conn, stmt, rs);
+	public MemberDTO selectOne(MemberDTO dto) {
+		MemberDTO member = null;
+		conn = JdbcUtil.getConnection();
+		try {
+			stmt = conn.prepareStatement(SELECT_ONE);
+			stmt.setInt(1, dto.getSeq());
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				int seq = rs.getInt(1);
+				String name = rs.getString(2);
+				int height = rs.getInt(3);
+				int weight = rs.getInt(4);
+				int age = rs.getInt(5);
+				String gender = rs.getString(6);
+				member = new MemberDTO(seq, name, height, weight, age, gender);
 			}
-			return member;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(conn, stmt, rs);
 		}
+		return member;
+	}
 
-		public List<MemberDTO> findByName(String searchName) {
-			List<MemberDTO> list = new ArrayList<MemberDTO>();
-			conn = JdbcUtil.getConnection();
-			try {
-				stmt = conn.prepareStatement(FIND_BY_NAME);
-				stmt.setString(1,  "%"+searchName+"%");
-				rs = stmt.executeQuery();
-				while(rs.next()) {
-					int seq = rs.getInt(1);
-					String name = rs.getString(2);
-					int height = rs.getInt(3);
-					int weight = rs.getInt(4);
-					int age = rs.getInt(5);
-					String gender = rs.getString(6);
-					list.add(new MemberDTO(seq, name, height, weight, age, gender));
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				JdbcUtil.close(conn, stmt, rs);
+	public MemberDTO findBySeq(int seq) {
+		MemberDTO member = null;
+		conn = JdbcUtil.getConnection();
+		try {
+			stmt = conn.prepareStatement(SELECT_ONE);
+			stmt.setInt(1, seq);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				String name = rs.getString("name");
+				int height = rs.getInt("height");
+				int weight = rs.getInt("weight");
+				int age = rs.getInt("age");
+				String gender = rs.getString("gender");
+				member = new MemberDTO(seq, name, height, weight, age, gender);
 			}
-			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(conn, stmt, rs);
 		}
+		return member;
+	}
 
-		public void insert(MemberDTO dto) {
-			conn = JdbcUtil.getConnection();
-			try {
-				stmt = conn.prepareStatement(INSERT);
-				stmt.setString(1, dto.getName());
-				stmt.setInt(2, dto.getHeight());
-				stmt.setInt(3, dto.getWeight());
-				stmt.setInt(4, dto.getAge());
-				stmt.setString(5, dto.getGender());
-				int cnt = stmt.executeUpdate();
-				if(cnt > 0) {
-					System.out.println("입력 완료!");
-					conn.commit();
-				} else {
-					System.out.println("입력 실패!");
-					conn.rollback();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				JdbcUtil.close(conn, stmt, rs);
+	public List<MemberDTO> findByName(String searchName) {
+		List<MemberDTO> list = new ArrayList<MemberDTO>();
+		conn = JdbcUtil.getConnection();
+		try {
+			stmt = conn.prepareStatement(FIND_BY_NAME);
+			stmt.setString(1,  "%"+searchName+"%");
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				int seq = rs.getInt(1);
+				String name = rs.getString(2);
+				int height = rs.getInt(3);
+				int weight = rs.getInt(4);
+				int age = rs.getInt(5);
+				String gender = rs.getString(6);
+				list.add(new MemberDTO(seq, name, height, weight, age, gender));
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(conn, stmt, rs);
 		}
+		return list;
+	}
 
-		public void update(MemberDTO dto) {
-			conn = JdbcUtil.getConnection();
-			try {
-				stmt = conn.prepareStatement(UPDATE);
-				stmt.setString(1, dto.getName());
-				stmt.setInt(2, dto.getHeight());
-				stmt.setInt(3, dto.getWeight());
-				stmt.setInt(4, dto.getAge());
-				stmt.setString(5, dto.getGender());
-				int cnt = stmt.executeUpdate();
-				if(cnt > 0) {
-					System.out.println("수정 완료!");
-					conn.commit();
-				} else {
-					System.out.println("수정 실패!");
-					conn.rollback();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				JdbcUtil.close(conn, stmt, rs);
+	public MemberDTO insert(MemberDTO dto) {
+		conn = JdbcUtil.getConnection();
+		try {
+			stmt = conn.prepareStatement(INSERT);
+			stmt.setString(1, dto.getName());
+			stmt.setInt(2, dto.getHeight());
+			stmt.setInt(3, dto.getWeight());
+			stmt.setInt(4, dto.getAge());
+			stmt.setString(5, dto.getGender());
+			int result = stmt.executeUpdate();
+			if (result > 0) {
+				System.out.println("입력 완료");
+				conn.commit();
+			} else {
+				System.out.println("입력 실패");
+				conn.rollback();
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(conn, stmt, rs);
 		}
+		return dto;
+	}
 
-		public void delete(MemberDTO dto) {
-			conn = JdbcUtil.getConnection();
-			try {
-				stmt = conn.prepareStatement(DELETE);
-				stmt.setInt(1, dto.getSeq());
-				int cnt = stmt.executeUpdate();
-				if(cnt > 0) {
-					System.out.println("삭제 완료!");
-					conn.commit();
-				} else {
-					System.out.println("삭제 실패!");
-					conn.rollback();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				JdbcUtil.close(conn, stmt, rs);
+
+	public MemberDTO update(MemberDTO dto) {
+		conn = JdbcUtil.getConnection();
+		try {
+			stmt = conn.prepareStatement(UPDATE);
+			stmt.setString(1, dto.getName());
+			stmt.setInt(2, dto.getHeight());
+			stmt.setInt(3, dto.getWeight());
+			stmt.setInt(4, dto.getAge());
+			stmt.setString(5, dto.getGender());
+			stmt.setInt(6, dto.getSeq());
+			int result = stmt.executeUpdate();
+			if (result > 0) {
+				System.out.println("수정 완료");
+				conn.commit();
+			} else {
+				System.out.println("수정 실패");
+				conn.rollback();
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(conn, stmt, rs);
+		}
+		return dto;
+	}
+
+	public void delete(MemberDTO dto) {
+		conn = JdbcUtil.getConnection();
+		try {
+			stmt = conn.prepareStatement(DELETE);
+			stmt.setInt(1, dto.getSeq());
+			int result = stmt.executeUpdate();
+			if(result > 0) {
+				System.out.println("삭제 완료");
+				conn.commit();
+			} else {
+				System.out.println("삭제 실패");
+				conn.rollback();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(conn, stmt, rs);
 		}
 	}
+}

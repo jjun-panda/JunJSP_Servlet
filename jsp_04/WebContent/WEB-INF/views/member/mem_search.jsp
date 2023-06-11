@@ -3,11 +3,13 @@
 <%@ include file="/inc/header.jsp" %>
 
 <div class="body_layout">
-    <h1>멤버 검색</h1>
+    <div class="tit_bg">
+        <h1>멤버 검색</h1>
+    </div>
     <div class="content_layout">
         <form action="search_list.do" method="post">
-            검색어 : <input type="text" name="SearchName" value="김코딩" />
-            <br />
+            검색어 <input type="text" name="searchName" placeholder="검색하실 단어를 입력해주세요" />
+            <br /><br />
             <input type="submit" value="검색" />
         </form>
     </div>
