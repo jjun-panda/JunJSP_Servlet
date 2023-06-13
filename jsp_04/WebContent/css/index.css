@@ -103,6 +103,10 @@ hr {
 }
 
 /* 라디오 버튼 */
+label {
+    margin-right: 2rem;
+}
+
 .checkboxGender {
 	display: none;
 }
@@ -158,7 +162,6 @@ hr {
 	margin-left: 0.5rem;
 	font-family: "PretendardVariable";
 	font-weight: 500;
-    margin-right: 2rem;
 }
 
 .checkboxGender + em + span:last-child {

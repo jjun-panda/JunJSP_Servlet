@@ -29,8 +29,8 @@
             </div>
             <div>
                 <p>성별</p>
-                <input class="checkboxGender" type="radio" name="gender" value="남자" checked="checked" /><em></em><span>남자</span>
-                <input class="checkboxGender" type="radio" name="gender" value="여자" /><em></em><span>여자</span>
+                <label><input class="checkboxGender" type="radio" name="gender" value="남자" checked="checked" /><em></em><span>남자</span></label>
+                <label><input class="checkboxGender" type="radio" name="gender" value="여자" /><em></em><span>여자</span></label>
             </div>       
             <hr />
             <input type="submit" value="저장" />

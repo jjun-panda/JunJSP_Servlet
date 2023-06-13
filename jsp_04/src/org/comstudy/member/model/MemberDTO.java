@@ -10,7 +10,7 @@ public class MemberDTO {
 	private String gender;
 	
 	public MemberDTO() {
-		this(0, "", 0, 0, 0, "F");
+		this(0, "", 0, 0, 0, "남자");
 	}
 
 	public MemberDTO(int seq, String name, int height, int weight, int age, String gender) {

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MemberMapper">
+  <select id="selectMember" resultType="org.mybatis.member.model.Member">
+    <!-- SELECT_ONE -->
+    select * from member where seq = #{seq}
+  </select>
+
+  <select id="selectAll" resultType="org.mybatis.member.model.Member">
+    <!-- SELECT_ALL -->
+    SELECT * FROM MEMBER ORDER BY SEQ DESC
+  </select>
+
+  <select id="findByName" resultType="org.mybatis.member.model.Member">
+    <!-- FIND_BY_NAME -->
+    SELECT * FROM MEMBER WHERE NAME LIKE '%'||#{title}||'%' order by id desc
+  </select>
+
+  <insert id="insertMember" parameterType="org.mybatis.member.model.Member">
+    <!-- INSERT -->
+    INSERT INTO MEMBER(SEQ, NAME, HEIGHT, WEIGHT, AGE, GENDER) VALUES(mem_seq.nextval, #{name}, #{height}, #{weight}, #{age}, #{gender})
+  </insert>
+
+  <update id="updateMember" parameterType="org.mybatis.member.model.Member">
+    <!-- UPDATE -->
+    UPDATE MEMBER SET NAME=#{name}, HEIGHT=#{height}, WEIGHT=#{weight}, AGE=#{age}, GENDER=#{gender} WHERE SEQ=#{seq}
+  </update>
+
+  <delete id="deleteMember" parameterType="org.mybatis.member.model.Member">
+    <!-- DELETE -->
+    DELETE FROM MEMBER WHERE SEQ = #{seq}
+  </delete>
+</mapper>
+
