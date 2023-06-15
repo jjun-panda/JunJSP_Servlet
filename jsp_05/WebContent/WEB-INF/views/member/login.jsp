@@ -63,10 +63,12 @@
                 </div>
                 <div>
                     <p>분야</p>
-                    <label><input class="checkboxBox" type="checkbox" name="checkbox" value="UX" /><em></em><span>UX Design</span></label>
-                    <label><input class="checkboxBox" type="checkbox" name="checkbox" value="UI" /><em></em><span>UI Design</span></label>
-                    <label><input class="checkboxBox" type="checkbox" name="checkbox" value="BX" /><em></em><span>BX Design</span></label>
-                    <label><input class="checkboxBox" type="checkbox" name="checkbox" value="AI" /><em></em><span>AI Design</span></label>
+                    <div class="checkOp">
+                        <label><input class="checkboxBox" type="checkbox" name="checkbox" value="UX" /><em></em><span>UX Design</span></label>
+                        <label><input class="checkboxBox" type="checkbox" name="checkbox" value="UI" /><em></em><span>UI Design</span></label>
+                        <label><input class="checkboxBox" type="checkbox" name="checkbox" value="BX" /><em></em><span>BX Design</span></label>
+                        <label><input class="checkboxBox" type="checkbox" name="checkbox" value="AI" /><em></em><span>AI Design</span></label>
+                    </div>
                 </div>     
                 <hr />
                 <input type="submit" value="로그인" />
