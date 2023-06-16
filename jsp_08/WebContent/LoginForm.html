@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> 스타의 홈페이지</title>
+<link rel="stylesheet" href="./css/index.css" type="text/css">
+</head>
+<body>
+<body>
+    <div class="body_layout">
+        <div class="tit_bg">
+            <h1>Login</h1>
+        </div>
+        <div class="content_layout">
+            <form action="member/login" method="post">
+                <div>
+                    <p>사용자명</p>
+                    <input type="text" name="userName" minlength="3" maxlength="5" placeholder="사용자명를 입력해주세요(3~5자 이내)" required />
+                </div>
+                <div>
+                    <p>이메일주소</p>
+                    <input type="email" name="userID" placeholder="이메일주소를 입력해주세요" required />
+                </div>
+                <div>
+                    <p>비밀번호</p>
+                    <input type="password" name="password" placeholder="비밀번호를 입력해주세요" minlength="4" required />
+                </div>
+                <!-- <div>
+                    <p>분야</p>
+                    <div class="checkOp">
+                        <label><input class="checkboxBox" type="checkbox" name="checkbox" value="UX" /><em></em><span>UX Design</span></label>
+                        <label><input class="checkboxBox" type="checkbox" name="checkbox" value="UI" /><em></em><span>UI Design</span></label>
+                        <label><input class="checkboxBox" type="checkbox" name="checkbox" value="BX" /><em></em><span>BX Design</span></label>
+                        <label><input class="checkboxBox" type="checkbox" name="checkbox" value="AI" /><em></em><span>AI Design</span></label>
+                    </div>
+                </div>      -->
+                <input type="submit" value="로그인" />
+            </form>
+        </div>
+    </div>
+</body>
+</html>

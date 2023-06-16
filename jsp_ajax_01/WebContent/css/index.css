@@ -1,0 +1,401 @@
+@charset "UTF-8";
+@import url("http://www.jjuns-c.com/webColor.css");
+@import url("http://www.jjuns-c.com/webFont.css");
+@import url("http://www.jjuns-c.com/webReset.css");
+
+::selection {
+	background: var(--light-primary-normal);
+	color: var(--white);
+}
+
+/* body {background-color: var(--light-primary-normal)} */
+h1 {
+	color:var(--light-primary-normal)
+}
+
+h2,h3,h4,h5,p,span, a, ul, li, form{
+	color:var(--light-text-normal);
+	font-size: 1.25rem;
+}
+
+table {
+	max-width: 50rem;
+	width: 100%;
+	border-top: 3px solid var(--light-primary-normal);
+	border-right: 0;
+	border-left: 0;
+	margin: 1rem auto 2rem;
+}
+table tr > td {
+	height: 2.75rem;
+	/* padding: 0.75rem; */
+	vertical-align: middle;
+	text-align: center;
+	border-top: 1px solid var(--light-primary-normal);
+}
+table tr > th {
+	height: 2.25rem;
+	/* padding: 0.75rem; */
+	vertical-align: middle;
+	text-align: center;
+	font-size: .875rem;
+}
+table tr.tab {
+	background-color: var(--light-background-primary);
+}
+
+.body_layout{
+	max-width: 100%;
+	width: 100%;
+}
+
+.tit_bg{
+	/* background-color: var(--light-primary-assistive); */
+}
+.tit_bg>h1{
+	font-size: 3rem;
+	max-width: 50rem;
+	margin: auto;
+	padding: 4rem 2rem 0;
+    font-weight: 300; 
+    color: var(--light-text-strong);
+}
+.tit_bg>h1>span {
+    font-size: 3rem; 
+    color: var(--light-primary-normal);
+}
+.content_layout{
+	max-width: 50rem;
+	/* width: 100%; */
+	margin: 1rem auto;
+	padding: 2rem;
+}
+button{
+	font-size: 1rem;
+	height: 3rem;
+	border-radius: .25rem;
+	border: 0;
+	background-color: var(--light-primary-normal);
+	padding: 0 2rem;
+	color: var(--white);
+}
+
+input[type="button"]{
+	font-size: .8rem;
+	height: 1.8rem;
+	border-radius: .25rem;
+	border: 0;
+	background-color: var(--light-primary-normal);
+	padding: 0 1rem;
+	color: var(--white);
+}
+input[type="number"] {
+	background-color: var(--light-background-primary);
+	border-radius: .25rem;
+	height: 3rem;
+	padding: 0 1rem;
+	border: 0;
+	width: 3rem;
+	font-size: 2rem;
+}
+input[type="text"], input[type="email"], input[type="password"] {
+	background-color: var(--light-background-primary);
+	border-radius: .25rem;
+	height: 3rem;
+	padding: 0 1rem;
+	border: 0;
+	font-size: 1rem;
+	width: 15rem;
+}
+input[type="submit"]{
+	background-color: var(--light-primary-normal);
+    border: none;
+    border-radius: 0.25rem;
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0 1rem;
+    height: 3rem;
+    min-width: 7.5rem;
+    max-width: 25rem;
+}
+textarea {
+    background-color: var(--light-background-primary);
+    border-radius: 0.25rem;
+    height: 3rem;
+    padding: 1rem;
+    border: 0;
+    font-size: 1rem;
+    max-width: 15rem;
+    min-width: 15rem;
+    max-height: 10rem;
+    min-height: 4rem;
+}
+
+hr {
+	margin: 2rem 0 1rem;
+	border: 0;
+	height: 1px;
+	background-color: var(--light-line-strong);
+}
+
+.content_layout div {
+	margin-bottom: 1rem;
+}
+
+label {
+    /* margin-right: 2rem; */
+}
+/* 체크박스 */
+.checkboxBox {
+	display: none;
+}
+
+.checkboxBox + em {
+	display: inline-block;
+	vertical-align: middle;
+	width: 1.25rem;
+	height: 1.25rem;
+	border: 2px solid var(--gray-200);
+	border-radius: .25rem;
+	position: relative;
+	background: var(--white);
+	cursor: pointer;
+	box-sizing: border-box;
+}
+
+.checkboxBox + em:before {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	background: url("https://marosol-bucket-dev.s3.ap-northeast-2.amazonaws.com/0211color/checkbox_white.svg")no-repeat 50% 50%;
+	opacity: 0;
+	transition: all 0.3s ease;
+	transform: scale(0.2);
+}
+
+.checkboxBox + em + span {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 1rem;
+	line-height: 1.25rem;
+	color: var(--gray-900);
+	margin-left: 0.25rem;
+	font-family: "PretendardVariable";
+	font-weight: 500;
+}
+
+.checkboxBox:checked + em {
+	background: var(--light-primary-normal);
+	border: var(--light-primary-normal);
+}
+
+.checkboxBox:checked + em:before {
+	opacity: 1;
+	transform: scale(1);
+}
+
+
+/* 라디오 버튼 */
+.checkboxGender {
+	display: none;
+}
+
+.checkboxGender + em {
+	display: inline-block;
+	vertical-align: middle;
+	width: 1.25rem;
+	height: 1.25rem;
+	border: 2px solid var(--gray-200);
+	border-radius: 1.25rem;
+	position: relative;
+	box-sizing: border-box;
+}
+
+.checkboxGender:checked + em {
+	display: inline-block;
+	vertical-align: middle;
+	width: 1.25rem;
+	height: 1.25rem;
+	border: 0;
+	border-radius: 1.25rem;
+	background-color: var(--light-primary-normal);
+	position: relative;
+	box-sizing: border-box;
+}
+
+.checkboxGender + em:before {
+	content: "";
+	position: absolute;
+	left: 0.375rem;
+	right: 0.375rem;
+	bottom: 0.375rem;
+	top: 0.375rem;
+	border-radius: 1.25rem;
+	background: var(--white);
+	transform: scale(0.3);
+	opacity: 0;
+	transition: all 0.3s ease;
+}
+
+.checkboxGender:checked + em:before {
+	transform: scale(1);
+	opacity: 1;
+}
+
+.checkboxGender + em + span {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 1rem;
+	line-height: 1.25rem;
+	color: var(--gray-900);
+	margin-left: 0.5rem;
+	font-family: "PretendardVariable";
+	font-weight: 500;
+}
+
+.checkboxGender + em + span:last-child {
+	margin-right: 0;
+}
+
+.checkOp {
+	display: flex;
+	gap: 2rem;
+}
+
+.detailtit {
+    font-weight: 300;
+    font-size: 3.5rem;
+    color: var(--light-text-dlsable);
+}
+.detailtit>span {
+    font-size: 3.5rem;
+    color: var(--light-text-strong);
+    background-image: linear-gradient(0, var(--light-primary-normal) 0%, var(--light-primary-normal) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 20%;
+    background-position: 0 90%;
+    transition: background-size 0.25s ease-in;
+}
+.detailtit>span:hover{
+    background-size: 100% 100%;
+    /* color: var(--light-primary-normal); */
+}
+
+.blogContents .title {
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--light-text-strong);
+}
+.blogContents .author {
+    font-weight: 300;
+    font-size: 1rem;
+    color: var(--light-text-assitive);
+}
+
+.blogContents .content {
+	margin-top: 1rem;
+	padding: 1rem .5rem;
+	border-top: 2px solid var(--light-line-normal);
+	font-weight: 500;
+	min-height: 10rem;
+	font-size: 1rem;
+	color: var(--light-text-strong);
+}
+
+/* main home */
+.content_layout ul {
+	gap: 2rem;
+	width: 100%;
+	display: inline-flex;
+}
+
+.content_layout ul>li {
+    width: calc(100%/3);
+    text-align: center;
+}
+
+.content_layout ul>li>a {
+    width: 100%;
+    display: block;
+    padding: 1rem 0;
+    border-radius: 0.5rem;
+    border: 2px solid var(--light-primary-normal);
+    border-radius: 0.5rem;
+    background-color: var(--light-primary-normal);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1.5rem;
+	transition: all 0.3s ease;
+}
+
+.content_layout ul>li>a:hover {
+	background-color: var(--white);
+    color: var(--light-primary-normal);
+}
+
+.drtail_tit {
+    /* display: flex; */
+    font-weight: 300;
+    font-size: 2rem;
+    color: var(--light-text-dlsable);
+    /* align-items: center; */
+}
+.drtail_tit>span {
+    font-size: 2rem;
+    color: var(--light-primary-normal);
+    /* background-image: linear-gradient(0, var(--light-primary-normal) 0%, var(--light-primary-normal) 100%); */
+    /* background-repeat: no-repeat; */
+    /* background-size: 100% 20%; */
+    /* background-position: 0 90%; */
+    /* transition: background-size 0.25s ease-in; */
+}
+.bg_sebtit {
+	padding: 1rem 1rem 2rem;
+	border-bottom: 2px solid var(--light-primary-normal);
+	margin-bottom: 1.5rem;
+	height: 5.375rem;
+}
+.price {
+	font-size: 1rem;
+	color: var(--light-text-assitive);
+	padding: .25rem 1rem;
+	background-color: var(--light-primary-assistive);
+}
+
+.cartTotal {
+	text-align: right;
+    padding-right: 2rem;
+    font-size: 1.5rem;
+	font-weight: 300;
+	color: var(--light-text-normal);
+}
+.cartTotal span {
+	font-weight: 700;
+	color: var(--light-text-normal);
+	font-size: 1.5rem;
+}
+
+#sebButton {
+	font-size: 1rem;
+	height: 3rem;
+	border-radius: .25rem;
+	border: 0;
+	border: 1px solid var(--light-primary-normal);
+	background-color: var(--white);
+	padding: 0 1rem;
+	color: var(--light-primary-normal);
+	transition: all 0.3s ease;
+	font-weight: 700;
+}
+
+#sebButton:hover {
+	background-color: var(--light-primary-normal);
+	border: 1px solid var(--light-primary-normal);
+	color: var(--white);
+
+}

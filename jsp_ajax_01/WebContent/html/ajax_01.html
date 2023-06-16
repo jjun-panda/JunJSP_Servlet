@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ajax 실습</title>
+<link rel="stylesheet" href="./../css/index.css" type="text/css">
+</head>
+<body>
+<body>
+    <div class="body_layout">
+        <div class="tit_bg">
+            <h1>Ajax 실습</h1>
+        </div>
+        <div class="content_layout">
+            <p class="drtail_tit bg_sebtit" id="demo"></p>
+            <!-- <hr/> -->
+            <div>
+                <p>사용자명</p>
+                <input type="text" id="user" placeholder="사용자명을 입력해주세요" required />
+            </div>
+            <div>
+                <p>메시지</p>
+                <input type="text" id="msg" placeholder="메시지를 입력해주세요" required />
+            </div>
+            <button id="loadBtn">Load</button>
+        </div>
+    </div>
+    <script>
+    function loadData(user, msg) {
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function() {
+            var txt = xhr.responseText.trim();
+            var obj = JSON.parse(txt);
+            document.getElementById("demo").innerHTML = obj.user+"<br/>"+obj.msg;
+        }
+        xhr.open("GET", `../jsp/data.jsp?user=${user}&msg=${msg}`, true);
+        xhr.send();
+    }
+
+    document.getElementById("loadBtn").onclick = function() {
+        var user = document.getElementById("user").value;
+        var msg = document.getElementById("msg").value;
+        loadData(user, msg);
+    }
+</script>
+</body>
+</html>
