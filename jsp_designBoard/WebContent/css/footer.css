@@ -1,0 +1,20 @@
+
+/* footer */
+.footerbg{
+	background-color: var(--gray-50);
+    color: var(--gray-500);
+    padding: 40px 0;
+	font-size: .875rem;
+}
+
+
+.footerbg .Container .info {
+	display: flex;
+    justify-content: space-between;
+    transition: 1s ease;
+}
+
+.footerbg .info p {
+	color: var(--gray-500);
+	font-size: .875rem;
+}

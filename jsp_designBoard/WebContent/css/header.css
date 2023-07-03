@@ -1,0 +1,98 @@
+
+/* haeder */
+.navHeader {
+    align-items: center;
+    display: flex;
+    height: 6rem;
+    position: fixed;
+    width: 100%;
+    z-index: 10000001;
+}
+.navHeader::after {
+	-webkit-backdrop-filter: blur(5px);
+	backdrop-filter: blur(5px);
+	content: "";
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: -1;
+	border-bottom: 1px solid var(--light-line-normal);
+}
+.navContainer {
+	align-items: center;
+    display: flex;
+    justify-content: space-between;
+	margin: 0 auto;
+}
+ul.navMenu {
+	align-items: center;
+    display: flex;
+    gap: 1.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+ul.navMenu a {
+	color: var(--light-text-alternative);
+	font-weight: 500;
+	position: relative;
+}
+ul.navMenu a:active, ul.navMenu a:hover {
+	color: var(--gray-900);
+}
+ul.navMenu a:hover::after {
+    opacity: 1;
+    width: 100%;
+}
+ul.navMenu a:after {
+	background-color: var(--gray-900);
+	bottom: -0.125rem;
+	content: "";
+	height: 0.125rem;
+	left: 0;
+	margin: .25rem 0 0;
+	opacity: 0;
+	position: absolute;
+	transition: all .2s ease-in-out;
+	transition-duration: .3s;
+	width: 0;
+}
+
+/* header_Logo */
+.logoForm {
+	gap: .25rem;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+}
+
+.logoImg {
+	/* width: 2rem; */
+	border-radius: 0;
+	height: 1.25rem;
+}
+
+.logoName {
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: -.0625rem;
+    line-height: 1.25;
+    font-size: 1.5rem;
+}
+
+.logoName::after {
+	color: var(--light-primary-normal);
+	content: "Beta";
+	font-size: 0.75rem;
+	/* margin-left: 4px; */
+	vertical-align: super;
+}
+
+
+.navIcon {
+	display: flex;
+    gap: 0.5rem;
+}

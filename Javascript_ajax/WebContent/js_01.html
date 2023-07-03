@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트 fotFach문 예제</title>
+<link rel="stylesheet" href="./css/index.css" type="text/css">
+</head>
+<body>
+    <div class="body_layout">
+		<div class="tit_bg">
+			<h1>자바스크립트 fotFach문 예제</h1>
+		</div>
+        <div class="content_layout">
+            <div id="demo"></div>
+        </div>
+	</div>
+
+<script>
+    var arr = ['오징어', '꼴뚜기', '고등어', '거북이', '상어', '물개']
+    // console.log(arr);
+    // document.write(arr);
+    // alert(arr);
+    // document.querySelector("#demo").innerText = arr;
+    // document.getElementById("demo").innerHTML = arr;
+    var demoArea = document.getElementById("demo");
+    arr.forEach(function(value, index, array) {
+        // arr.pop();
+        // console.log(arr);
+        demoArea.innerHTML += `<li>${value}</li>`;
+    })
+</script>
+</body>
+</html>

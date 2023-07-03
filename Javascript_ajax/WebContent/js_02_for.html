@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>for를 이용한 List 구현</title>
+<link rel="stylesheet" href="./css/index.css" type="text/css">
+</head>
+<body>
+	<div class="body_layout">
+		<div class="tit_bg">
+			<h1><span>for</span>를 이용한 List 구현</h1>
+		</div>
+		<div class="content_layout">
+			<table id="listArea">
+			<!-- 자바스크립트로 목록을 삽입한다. -->
+			</table>
+		</div>
+	</div>
+<script>
+const saramList = [
+{"seq":1, "id":"Kim", "name":"Code", "age":21},
+{"seq":2, "id":"Park", "name":"Code", "age":22},
+{"seq":3, "id":"Choi", "name":"Code", "age":25},
+{"seq":4, "id":"Han", "name":"Code", "age":22},
+{"seq":5, "id":"Lee", "name":"Code", "age":20},
+];
+
+var listArea = document.querySelector("#listArea");
+var htmlData = "";
+// for문을 이용한 구현
+for(var i=0; i<saramList.length; i++) {
+	var saram = saramList[i];
+	htmlData += "<tr>";
+	htmlData += "<td>"+ saram['seq'] +"</td>";
+	htmlData += "<td>"+ saram['id'] +"</td>";
+	htmlData += "<td>"+ saram['name'] +"</td>";
+	htmlData += "<td>"+ saram['age'] +"</td>";
+	htmlData += "</tr>";
+}
+listArea.innerHTML = htmlData;
+</script>
+</body>
+</html>

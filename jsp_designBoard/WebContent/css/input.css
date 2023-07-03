@@ -1,0 +1,52 @@
+input[type="button"]{
+	font-size: .8rem;
+	height: 1.8rem;
+	border-radius: .25rem;
+	border: 0;
+	background-color: var(--light-primary-normal);
+	padding: 0 1rem;
+	color: var(--white);
+}
+input[type="number"] {
+	background-color: var(--light-background-primary);
+	border-radius: .25rem;
+	height: 3rem;
+	padding: 0 1rem;
+	border: 0;
+	width: 3rem;
+	font-size: 2rem;
+}
+input[type="text"], input[type="email"], input[type="password"] {
+	background-color: var(--light-background-primary);
+	border-radius: .25rem;
+	height: 3rem;
+	padding: 0 1rem;
+	border: 0;
+	font-size: 1rem;
+	width: 15rem;
+}
+/* input[type="submit"]{
+	background-color: var(--light-primary-normal);
+    border: none;
+    border-radius: 0.25rem;
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0 1rem;
+    height: 3rem;
+    min-width: 7.5rem;
+    max-width: 25rem;
+} */
+textarea {
+    background-color: var(--light-background-primary);
+    border-radius: 0.25rem;
+    height: 3rem;
+    padding: 1rem;
+    border: 0;
+    font-size: 1rem;
+    max-width: 15rem;
+    min-width: 15rem;
+    max-height: 10rem;
+    min-height: 4rem;
+}

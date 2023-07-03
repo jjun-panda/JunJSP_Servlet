@@ -1,0 +1,137 @@
+.layoutBody{
+    flex-grow: 1;
+    position: relative;
+    z-index: 1;
+}
+.bodyBg {
+    background-color: var(--white);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    position: absolute;
+    z-index: -1;
+    margin: 6rem 0 5rem;
+    height: 100%;
+}
+
+.contentImg {
+    background-color: var(--light-primary-assistive);
+    height: 15rem;
+}
+.titBg {
+    padding: 4rem 0 1rem;
+    border-bottom: 4px solid var(--light-text-normal);
+    margin-bottom: 1rem;
+}
+.titBg p{
+    display: inline-block;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+/* table */
+.content_layout .seqTable{
+    width: calc(100% / 10 * .5);
+}
+.content_layout .titTable {
+    width: calc(100%/10 * 7);
+}
+.content_layout .authTable {
+    width: calc(100% / 10 * 1);
+}
+.content_layout .dayTable {
+    width: calc(100% / 10 * 1);
+}
+.content_layout .readTable {
+    width: calc(100% / 10 * .5);
+}
+.content_layout div {
+	margin-bottom: 1rem;
+}
+.content_layout span {
+	color: var(--light-primary-normal);
+}
+
+.content_layout table {
+	width: 100%;
+	/* border-top: 4px solid var(--light-primary-normal); */
+	border-right: 0;
+	border-left: 0;
+	/* margin: 1rem auto 2rem; */
+}
+.content_layout table tr > td {
+	height: 3rem;
+	padding: 0 1rem;
+	border-bottom: 1px solid var(--light-line-normal);
+	vertical-align: middle;
+	text-align: center;
+	color: var(--light-text-strong);
+	font-size: .875rem;
+}
+
+.content_layout table tr > td > a {
+	text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+	transition: all 0.3s ease;
+}
+
+.content_layout table tr > td > a:hover {
+	text-decoration: underline;
+}
+
+.content_layout table tr > td > span {
+	text-align: center;
+	display: inline-block;
+	width: 4rem;
+	padding: .25rem .5rem;
+	font-weight: 700;
+	font-size: .625rem;
+	border: 1px solid var(--light-text-normal);
+	border-radius: 1rem;
+	margin-right: .5rem;
+	color: var(--light-text-normal);
+}
+
+.content_layout table tr > th {
+	height: 3.25rem;
+	padding: 0 1rem;
+	border-bottom: 1px solid var(--light-line-normal);
+	vertical-align: middle;
+	text-align: center;
+	font-size: 1rem;
+	font-weight: 700;
+	color: var(
+	--light-text-normal);
+}
+.content_layout table tr.tab {
+	background-color: var(--light-background-primary);
+}
+.content_layout table tr > td.titContent, .content_layout table tr > td.titContent > a {
+	text-align: left;
+	color: var(--light-text-strong);
+	font-size: .875rem;
+}
+div.btns {
+    gap: .5rem;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 3rem;
+}
+div.btns .write{
+    border: 1px solid var(--light-text-normal);
+    color: var(--light-text-normal);
+    background-color: var(--white);
+    padding: 0 1rem;
+    height: 2.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    display: inline-flex;
+    text-align: center;
+    align-items: center;
+    min-width: 5rem;
+    justify-content: center;
+}

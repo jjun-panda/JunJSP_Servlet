@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="DesignMapper">
+	<select id="selectAll" resultType="org.com.model.DesignDTO">
+		select * from design order by num desc
+	</select>
+
+	<select id="selectOne" resultType="org.com.model.DesignDTO">
+		select * from design where num = #{num}
+	</select>
+	
+  <insert id="insertDesign" parameterType="org.com.model.DesignDTO">
+    insert into design (num, author, typename, title, content, password)
+    values (design_num.nextval, #{author}, #{typename}, #{title}, #{content}, #{password})
+  </insert>
+
+  <update id="updateDesign" parameterType="org.com.model.DesignDTO">
+    update design set typename = #{typename}, title = #{title}, content = #{content} where num = #{num}
+  </update>
+
+  <delete id="deleteDesign" parameterType="org.com.model.DesignDTO">
+    delete from design where num = #{num}
+  </delete>
+
+  <update id="updateReadCnt" parameterType="org.com.model.DesignDTO">
+    update design set readcnt = readcnt + 1 where num = #{num}
+  </update>
+</mapper>

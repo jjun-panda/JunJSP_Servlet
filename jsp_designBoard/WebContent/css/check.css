@@ -1,0 +1,114 @@
+/* 체크박스 */
+.checkboxBox {
+	display: none;
+}
+
+.checkboxBox + em {
+	display: inline-block;
+	vertical-align: middle;
+	width: 1.25rem;
+	height: 1.25rem;
+	border: 2px solid var(--gray-200);
+	border-radius: .25rem;
+	position: relative;
+	background: var(--white);
+	cursor: pointer;
+	box-sizing: border-box;
+}
+
+.checkboxBox + em:before {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	background: url("https://marosol-bucket-dev.s3.ap-northeast-2.amazonaws.com/0211color/checkbox_white.svg")no-repeat 50% 50%;
+	opacity: 0;
+	transition: all 0.3s ease;
+	transform: scale(0.2);
+}
+
+.checkboxBox + em + span {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 1rem;
+	line-height: 1.25rem;
+	color: var(--gray-900);
+	margin-left: 0.25rem;
+	font-family: "PretendardVariable";
+	font-weight: 500;
+}
+
+.checkboxBox:checked + em {
+	background: var(--light-primary-normal);
+	border: var(--light-primary-normal);
+}
+
+.checkboxBox:checked + em:before {
+	opacity: 1;
+	transform: scale(1);
+}
+
+
+/* 라디오 버튼 */
+.checkboxGender {
+	display: none;
+}
+
+.checkboxGender + em {
+	display: inline-block;
+	vertical-align: middle;
+	width: 1.25rem;
+	height: 1.25rem;
+	border: 2px solid var(--gray-200);
+	border-radius: 1.25rem;
+	position: relative;
+	box-sizing: border-box;
+}
+
+.checkboxGender:checked + em {
+	display: inline-block;
+	vertical-align: middle;
+	width: 1.25rem;
+	height: 1.25rem;
+	border: 0;
+	border-radius: 1.25rem;
+	background-color: var(--light-primary-normal);
+	position: relative;
+	box-sizing: border-box;
+}
+
+.checkboxGender + em:before {
+	content: "";
+	position: absolute;
+	left: 0.375rem;
+	right: 0.375rem;
+	bottom: 0.375rem;
+	top: 0.375rem;
+	border-radius: 1.25rem;
+	background: var(--white);
+	transform: scale(0.3);
+	opacity: 0;
+	transition: all 0.3s ease;
+}
+
+.checkboxGender:checked + em:before {
+	transform: scale(1);
+	opacity: 1;
+}
+
+.checkboxGender + em + span {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 1rem;
+	line-height: 1.25rem;
+	color: var(--gray-900);
+	margin-left: 0.5rem;
+	font-family: "PretendardVariable";
+	font-weight: 500;
+}
+
+.checkboxGender + em + span:last-child {
+	margin-right: 0;
+}

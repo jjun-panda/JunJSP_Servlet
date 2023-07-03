@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>forEach를 이용한 List 구현</title>
+<link rel="stylesheet" href="./css/index.css" type="text/css">
+</head>
+<body>
+	<div class="body_layout">
+		<div class="tit_bg">
+			<h1><span>forEach</span>를 이용한 List 구현</h1>
+		</div>
+		<div class="content_layout">
+			<hr/>
+			<form id="form">
+				<p>id</p><input type="text" name="id" placeholder="성을 입력해주세요" required >
+				<p>name</p><input type="text" name="name" placeholder="이름을 입력해주세요" required >
+				<p>age</p><input type="text" name="age" placeholder="나이를 입력해주세요" required >
+				<br/>
+				<input type="submit" value="저장" />
+			</form>
+			<hr/>
+			
+			<p style="text-align: right;">
+				<select id="searchType">
+					<option value="id">id</option>
+					<option value="name">name</option>
+				</select>
+				<input type="text" id="searchWord" placeholder="무엇을 찾으신가요?" /><input type="button" value="검색" id="searBtn"/>
+			</p>
+			<table>
+				<thead>
+					<tr>
+						<th style="width: calc(100%/10 *1)">번호</th>
+						<th style="width: calc(100%/10 *3)">아이디</th>
+						<th style="width: calc(100%/10 *2)">이름</th>
+						<th style="width: calc(100%/10 *2)">나이</th>
+						<th style="width: calc(100%/10 *1)"></th>
+						<th style="width: calc(100%/10 *1)"></th>
+					<tr>
+				</thead>
+				<tbody id="listArea">
+				<!-- 자바스크립트로 목록을 삽입한다. -->
+				</tbody>
+
+			</table>
+		</div>
+	</div>
+<script>
+var listArea = document.querySelector("#listArea");
+var form = document.querySelector("#form");
+var searchWord = document.querySelector("#searchWord");
+var searBtn = document.querySelector("#searBtn");
+var searchType = document.querySelector("#searchType");
+
+var saramList = [];
+
+function drawTbl(list) {
+	// 중요: 테이블 초기화 필수
+	listArea.innerHTML = "";
+	list.forEach(function(value, index, array) {
+		var rowData = `<td>${value['seq']}</td><td>${value['id']}</td>`;
+		rowData += `<td>${value['name']}</td><td>${value['age']}</td>`;
+		rowData += `<td><button class="modifyBtn">수정</button></td>`;
+		rowData += `<td><button data-seq=${value['seq']} class="deleteBtn">삭제</button></td>`;
+		listArea.innerHTML += "<tr>"+rowData+"</tr>";
+	});
+
+	var modifyBtnList = document.querySelectorAll(".modifyBtn");
+	var deleteBtnList = document.querySelectorAll(".deleteBtn");
+   // NodeList to Array
+	var btnArr = [...modifyBtnList];
+	var deleteArr = [...deleteBtnList];
+
+	deleteArr.forEach(function(btn, idx) {
+		btn.addEventListener("click",function(event) {
+			var seq = this.getAttribute("data-seq");
+			myAjax("saram_delete", null, null, 0, seq);
+		});
+	});
+
+	btnArr.forEach(function(btn, idx) {
+		btn.addEventListener("click",function(event) {
+			var trElement = this.parentNode.parentNode;
+			var cell1 = trElement.getElementsByTagName("td")[1];
+			var cell2 = trElement.getElementsByTagName("td")[2];
+			var cell3 = trElement.getElementsByTagName("td")[3];
+			if(this.innerText === "수정") {
+				cell1.innerHTML = "<input value='"+cell1.innerText+"' />";
+				cell2.innerHTML = "<input value='"+cell2.innerText+"' />";
+				cell3.innerHTML = "<input value='"+cell3.innerText+"' />";
+				this.innerText = "확인";
+			} else {
+            var seq = trElement.getElementsByTagName("td")[0].innerText;
+            var id = cell1.querySelector("input").value;
+            var name = cell2.querySelector("input").value;
+            var age = cell3.querySelector("input").value;
+            myAjax("saram_modify", id, name, age, seq);
+			}
+		});
+	});
+}
+// drawTbl(saramList);
+
+function myAjax(fileName, id, name, age, seq) {
+	var xhr = new XMLHttpRequest();
+	xhr.onload = function() {
+		saramList = JSON.parse( xhr.responseText.trim() );
+		drawTbl(saramList);
+	}
+	if(!fileName) {
+		fileName = "saram_data";
+	}
+	xhr.open("GET", fileName + `.jsp?id=${id}&name=${name}&age=${age}&seq=${seq}`, true);
+	xhr.send();
+}
+
+// function myAjax() {
+// 	var xhr = new XMLHttpRequest();
+// 	xhr.onload = function() {
+// 		saramList = JSON.parse( xhr.responseText.trim() );
+// 		drawTbl(saramList);
+// 	}
+// 	xhr.open("GET", "saram_data.jsp", true);
+// 	xhr.send();
+// }
+myAjax();
+
+
+
+// 검색 버튼 이벤트 핸들러
+function searchAction(event) {
+	var keyword = searchWord.value;
+	var type = searchType.value;
+	var newSaramList = saramList.filter(function(saramObj){
+		return saramObj[type].indexOf(keyword) != -1;
+	});
+	drawTbl(newSaramList);
+}
+// 자바스크립트는 함수도 참조 가능하다.
+searBtn.addEventListener("click", searchAction);
+searchWord.addEventListener("keyup", searchAction);
+
+// 새 데이터 저장
+form.addEventListener("submit", function(event) {
+	event.preventDefault(); // form의 기본 기능 해제
+	var id = this.id.value;
+	var name = this.name.value;
+	var age = this.age.value;
+	// Ajax를 이용해서 서버로전달
+	// 새 목록 갱신
+	myAjax("saram_input", id, name, age);
+});
+</script>
+</body>
+</html>

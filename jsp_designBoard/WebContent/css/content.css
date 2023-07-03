@@ -1,0 +1,9 @@
+/* title */
+.titleHeader{
+	font-weight: 700;
+	font-size: 2.25rem;
+	max-width: 50rem;
+	margin: auto;
+	color: var(--light-primary-normal);
+	margin-bottom: 2rem;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>forEach를 이용한 List 구현</title>
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<link rel="stylesheet" href="./css/index.css" type="text/css">
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+// 사용자 콤포넌트 선언
+function MyLink() {
+return (<>
+	<p>MyHome 따윈 없다! 네이버로 이동 하세요!</p>
+	<p><a href="http://www.naver.com">네이버</a></p>
+</>);
+}
+
+function Welcome() {
+return (<>
+	<h3>Welcome to my home</h3>
+	<MyLink />
+</>);
+}
+
+function Hello() {
+return (<>
+	<h1>Hello React World!</h1>
+	<Welcome />
+</>);
+}
+
+const root = ReactDOM.createRoot(document.querySelector("#root"));
+root.render(<Hello></Hello>);
+</script>
+
+</body>
+</html>

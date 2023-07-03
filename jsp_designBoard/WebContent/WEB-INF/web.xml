@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>jsp_designBoard</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
+  
+  <filter>
+    <filter-name>encodeFilter</filter-name>
+    <filter-class>org.com.common.EncodeFilter</filter-class>
+  </filter>
+	<filter-mapping>
+		<filter-name>encodeFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+  
+  <resource-ref>
+    <res-ref-name>jdbc/DesignDB</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
+  
+  <servlet>
+		<servlet-name>design</servlet-name>
+<!-- 		<servlet-class>org.com.controller.DesignController</servlet-class> -->
+		<servlet-class>org.com.controller.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>prefix</param-name>
+			<param-value>/WEB-INF/views/</param-value>
+		</init-param>
+		<init-param>
+			<param-name>suffix</param-name>
+			<param-value>.jsp</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>design</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	
+</web-app>
