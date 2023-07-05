@@ -60,7 +60,7 @@
          APR (HTTP/AJP) Connector: /docs/apr.html
          Define a non-SSL/TLS HTTP/1.1 Connector on port 8080
     -->
-    <Connector URIEncoding="UTF-8" connectionTimeout="20000" maxParameterCount="1000" port="8090" protocol="HTTP/1.1" redirectPort="8443"/>
+    <Connector URIEncoding="UTF-8" connectionTimeout="20000" maxParameterCount="1000" port="8999" protocol="HTTP/1.1" redirectPort="8443"/>
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
@@ -160,7 +160,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="jsp_designBoard" path="/jsp_designBoard" reloadable="true" source="org.eclipse.jst.jee.server:jsp_designBoard"/><Context docBase="Javascript_ajax" path="/Javascript_ajax" reloadable="true" source="org.eclipse.jst.jee.server:Javascript_ajax"/><Context docBase="Server_test" path="/Server_test" reloadable="true" source="org.eclipse.jst.jee.server:Server_test"/></Host>
+      <Context docBase="jsp_12" path="/jsp_12" reloadable="true" source="org.eclipse.jst.jee.server:jsp_12"/></Host>
     </Engine>
   </Service>
 </Server>
